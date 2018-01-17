@@ -5,7 +5,7 @@ var fs = require('fs');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var InlineSizePlugin = require('../index');
-var JSDOM = require('jsdom').JSDOM;
+var jsdom = require('jsdom');
 
 var dist = path.resolve(__dirname, 'dist');
 var extractApp = new ExtractTextPlugin('css/app.[contenthash:5].css');
@@ -55,23 +55,27 @@ test('test simple webpack config', function (t) {
     t.equal(err, null);
     t.equal(stats.hasErrors(), false);
     var htmlContent = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-    var dom = new JSDOM(htmlContent);
-    toArray(dom.window.document.scripts).forEach(function(script) {
-      if (script.src) {
-        t.true(/vendor/.test(script.src));
-      } else {
-        t.true(/this is app chunk/.test(script.textContent));
-      }
+    // var dom = new JSDOM(htmlContent);
+    jsdom.env(htmlContent, function (err, window) {
+      // free memory associated with the window
+      toArray(window.document.scripts).forEach(function(script) {
+        if (script.src) {
+          t.true(/vendor/.test(script.src));
+        } else {
+          t.true(/this is app chunk/.test(script.textContent));
+        }
+      });
+      toArray(window.document.querySelectorAll('style')).forEach(function(style) {
+        t.true(/this is app style/.test(style.textContent));
+      });
+      toArray(window.document.querySelectorAll('link')).forEach(function(link) {
+        if (link.rel === 'stylesheet') {
+          t.true(/vendor/.test(link.href));
+        }
+      });
+      t.end();
+      window.close();
     });
-    toArray(dom.window.document.querySelectorAll('style')).forEach(function(style) {
-      t.true(/this is app style/.test(style.textContent));
-    });
-    toArray(dom.window.document.querySelectorAll('link')).forEach(function(link) {
-      if (link.rel === 'stylesheet') {
-        t.true(/vendor/.test(link.href));
-      }
-    });
-    t.end();
   });
 });
 
