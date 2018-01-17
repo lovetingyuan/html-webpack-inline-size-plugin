@@ -1,0 +1,5 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+div:before {
+  content: "this is vendor style";
+}
