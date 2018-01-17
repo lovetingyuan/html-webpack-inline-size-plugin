@@ -23,9 +23,7 @@ or
 1. specify **`inlineSize`** option in [`html-webpack-plugin`](https://github.com/jantimon/html-webpack-plugin/)
 2. use `html-webpack-inline-size-plugin`
 
-the option **`inlineSource`** used by [`html-webpack-inline-source-plugin`](https://github.com/dustinjackson/html-webpack-inline-source-plugin) are also supported
-
-```
+the option **`inlineSource`** used by [`html-webpack-inline-source-plugin`](https://github.com/dustinjackson/html-webpack-inline-source-plugin) is also supported
 
 ### example
 
