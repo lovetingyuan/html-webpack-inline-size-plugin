@@ -1,7 +1,7 @@
 
-## html-webpack-inline-size-plugin
+# html-webpack-inline-size-plugin
 
- 💝 Embed javascript and css source inside of html by setting the smallest file size when using webpack
+ 💝 Embed javascript and css source with size limit inside of html when using webpack
 
 [![travis-ci](https://travis-ci.org/lovetingyuan/html-webpack-inline-size-plugin.svg?branch=master "CI")](https://travis-ci.org/lovetingyuan/html-webpack-inline-size-plugin)
 [![Version](https://img.shields.io/npm/v/html-webpack-inline-size-plugin.svg "version")](https://www.npmjs.com/package/html-webpack-inline-size-plugin)
