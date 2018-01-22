@@ -32,12 +32,13 @@ test('test simple webpack config', function (t) {
           loader: 'file-loader'
         },
         {
-          test: /app\.css/,
-          use: extractApp.extract('css-loader')
-        },
-        {
-          test: /[^app]\.css/,
-          use: extractVendor.extract('css-loader')
+          test: /\.css$/,
+          oneOf: [{
+            resourceQuery: /vendor/,
+            use: extractVendor.extract('css-loader')
+          }, {
+            use: extractApp.extract('css-loader')
+          }]
         }
       ]
     },
