@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-inline-size-plugin",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Embed javascript and css source inline into html by setting smallest size when using webpack",
   "main": "index.js",
   "directories": {
@@ -33,17 +33,17 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "bootstrap": "^3.3.7",
-    "css-loader": "^0.28.8",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.6",
-    "html-webpack-plugin": "^2.30.1",
+    "bootstrap": "^4.0.0",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.0.6",
     "jsdom": "<=9.12.0",
-    "tape": "^4.8.0",
-    "vue": "^2.5.13",
-    "webpack": "^3.10.0"
+    "tape": "^4.9.0",
+    "vue": "^2.5.16",
+    "webpack": "^4.1.1"
   },
   "dependencies": {
-    "html-webpack-inline-source-plugin": "^0.0.9"
+    "html-webpack-inline-source-plugin": "^0.0.10"
   }
 }
