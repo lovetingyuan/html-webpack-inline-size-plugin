@@ -1,7 +1,7 @@
 import assert from 'assert';
 import path from 'path';
 import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
-const pluginName = 'HtmlWebpackInlineSizePlugin';
+import { name as pluginName } from '../package.json';
 
 export default class HtmlWebpackInlineSizePlugin {
   constructor(options) {
