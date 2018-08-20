@@ -19,11 +19,11 @@ export default class HtmlWebpackInlineSizePlugin {
       const name = path.posix.relative(htmlPluginData.assets.publicPath, fileName);
       const asset = compilation.assets[name];
       if (asset && typeof asset.size === 'function' && asset.size() <= inlineSize) {
-        return `(${name})`;
+        return name;
       }
-    }).concat(inlineSource ? `(${inlineSource})` : '').filter(Boolean);
+    }).concat(inlineSource || '').filter(Boolean);
     if (!chunkFiles.length) return callback();
-    htmlPluginData.plugin.options.inlineSource = chunkFiles.join('|');
+    htmlPluginData.plugin.options.inlineSource = '(' + chunkFiles.join('|') + ')';
     callback(null, htmlPluginData);
   }
   apply(compiler) {
