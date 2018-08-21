@@ -23,7 +23,7 @@ export default class HtmlWebpackInlineSizePlugin {
       }
     }).concat(inlineSource || '').filter(Boolean);
     if (!chunkFiles.length) return callback();
-    htmlPluginData.plugin.options.inlineSource = '(' + chunkFiles.join('|') + ')';
+    htmlPluginData.plugin.options.inlineSource = '(' + chunkFiles.join('|') + ')+';
     callback(null, htmlPluginData);
   }
   apply(compiler) {
@@ -41,7 +41,7 @@ export default class HtmlWebpackInlineSizePlugin {
           this._filterFiles(compilation, ...args);
         });
       });
-      compiler.apply.apply(compiler, [inlineSourcePlugin]);
+      compiler.apply.call(compiler, inlineSourcePlugin);
     }
   }
 }
